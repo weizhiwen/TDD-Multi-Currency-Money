@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.tdd'
+version = '0.0.1'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:+'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
