@@ -5,7 +5,10 @@ public class Money {
 
     @Override
     public boolean equals(Object object) {
+        if (object == null) {
+            return false;
+        }
         Money money = (Money) object;
-        return this.amount == money.amount;
+        return this.amount == money.amount && getClass().equals(money.getClass());
     }
 }
