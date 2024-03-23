@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * Dollar/Franc duplications <br>
  * <s>Common equals</s> <br>
  * Common times <br>
- * Compare Francs with Dollars <br>
+ * <s>Compare Francs with Dollars</s> <br>
  */
 class TestMultiCurrencyMoney {
 
