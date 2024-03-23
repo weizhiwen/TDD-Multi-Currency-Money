@@ -55,6 +55,7 @@ class TestMultiCurrencyMoney {
 
     @Test
     void testDifferentClassEquality() {
+        assertEquals(new Money(10, "CHF"), new Franc(10, "CHF"));
         assertNotEquals(new Money(10, "CHF"), new Money(10, "USD"));
     }
 }
