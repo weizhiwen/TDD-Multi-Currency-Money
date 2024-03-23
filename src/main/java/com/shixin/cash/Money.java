@@ -1,13 +1,13 @@
 package com.shixin.cash;
 
-public abstract class Money {
+public class Money {
     public static final String CHF = "CHF";
     public static final String USD = "USD";
 
     protected int amount;
     protected String currency;
 
-    protected Money(int amount, String currency) {
+    public Money(int amount, String currency) {
         this.amount = amount;
         this.currency = currency;
     }
@@ -20,7 +20,9 @@ public abstract class Money {
         return new Franc(amount, Franc.CHF);
     }
 
-    abstract Money times(int multiplier);
+    public Money times(int multiplier) {
+        return new Money(amount * multiplier, currency);
+    }
 
     public String currency() {
         return currency;
@@ -32,6 +34,11 @@ public abstract class Money {
             return false;
         }
         Money money = (Money) object;
-        return this.amount == money.amount && getClass().equals(money.getClass());
+        return this.amount == money.amount && currency().equals(money.currency());
+    }
+
+    @Override
+    public String toString() {
+        return amount + " " + currency;
     }
 }

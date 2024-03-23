@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * <s>5 CHF * 2 = 10 CHF</s> <br>
  * Dollar/Franc duplications <br>
  * <s>Common equals</s> <br>
- * Common times <br>
+ * <s>Common times</s> <br>
  * <s>Compare Francs with Dollars</s> <br>
  * <s>Currency?</s> <br>
  * Delete testFrancMultiplication? <br>
@@ -51,5 +51,10 @@ class TestMultiCurrencyMoney {
     void testCurrency() {
         assertEquals("USD", Money.dollar(1).currency());
         assertEquals("CHF", Money.franc(1).currency());
+    }
+
+    @Test
+    void testDifferentClassEquality() {
+        assertNotEquals(new Money(10, "CHF"), new Money(10, "USD"));
     }
 }
