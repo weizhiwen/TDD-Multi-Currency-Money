@@ -12,12 +12,12 @@ public class Money {
         this.currency = currency;
     }
 
-    public static Dollar dollar(int amount) {
-        return new Dollar(amount, Dollar.USD);
+    public static Money dollar(int amount) {
+        return new Money(amount, Money.USD);
     }
 
-    public static Franc franc(int amount) {
-        return new Franc(amount, Franc.CHF);
+    public static Money franc(int amount) {
+        return new Money(amount, Money.CHF);
     }
 
     public Money times(int multiplier) {
