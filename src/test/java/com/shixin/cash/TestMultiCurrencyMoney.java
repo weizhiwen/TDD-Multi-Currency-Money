@@ -120,8 +120,8 @@ class TestMultiCurrencyMoney {
         assertEquals(Money.dollar(20), result);
     }
 
-    @Disabled
     @Test
+    @Disabled("目前的设计不支持该测试")
     void testPlusSameCurrencyReturnMoney() {
         Expression sum = Money.dollar(1).plus(Money.dollar(1));
         assertTrue(sum instanceof Money);
