@@ -1,13 +1,14 @@
 package com.shixin.cash;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * $5 + 10CHF = $10 if rate is 2:1 <br>
+ * <s>$5 + 10CHF = $10 if rate is 2:1</s> <br>
  * <s>$5 * 2 = $10</s> <br>
- * $5 + $5 = $10 <br>
+ * <s>$5 + $5 = $10</s> <br>
  * <s>Bank.reduce(Money)</s> <br>
  * <s>Make "amount" private</s> <br>
  * <s>Dollar side-effects?</s> <br>
@@ -95,5 +96,34 @@ class TestMultiCurrencyMoney {
         bank.addRate("CHF", "USD", 2);
         Money result = bank.reduce(fiveBucks.plus(tenFrancs), "USD");
         assertEquals(Money.dollar(10), result);
+    }
+
+    @Test
+    void testSumPlusMoney() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), result);
+    }
+
+    @Test
+    void testSumTimes() {
+        Expression fiveBucks = Money.dollar(5);
+        Expression tenFrancs = Money.franc(10);
+        Bank bank = new Bank();
+        bank.addRate("CHF", "USD", 2);
+        Expression sum = new Sum(fiveBucks, tenFrancs).times(2);
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), result);
+    }
+
+    @Disabled
+    @Test
+    void testPlusSameCurrencyReturnMoney() {
+        Expression sum = Money.dollar(1).plus(Money.dollar(1));
+        assertTrue(sum instanceof Money);
     }
 }
