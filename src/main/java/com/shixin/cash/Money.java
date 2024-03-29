@@ -20,12 +20,13 @@ public class Money implements Expression {
         return new Money(amount, Money.CHF);
     }
 
-    public Money times(int multiplier) {
+    public Expression times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
 
-    public Expression plus(Money money) {
+    @Override
+    public Expression plus(Expression money) {
         return new Sum(this, money);
     }
 
