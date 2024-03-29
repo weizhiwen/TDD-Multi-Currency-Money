@@ -26,7 +26,7 @@ public class Money implements Expression {
 
 
     public Expression plus(Money money) {
-        return new Money(amount + money.amount, currency);
+        return new Sum(this, money);
     }
 
     public String currency() {
@@ -45,5 +45,10 @@ public class Money implements Expression {
     @Override
     public String toString() {
         return amount + " " + currency;
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 }
