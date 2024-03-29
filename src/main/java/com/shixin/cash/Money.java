@@ -1,6 +1,6 @@
 package com.shixin.cash;
 
-public class Money {
+public class Money implements Expression {
     public static final String CHF = "CHF";
     public static final String USD = "USD";
 
@@ -22,6 +22,11 @@ public class Money {
 
     public Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
+    }
+
+
+    public Expression plus(Money money) {
+        return new Money(amount + money.amount, currency);
     }
 
     public String currency() {
